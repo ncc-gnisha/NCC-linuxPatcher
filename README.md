@@ -22,8 +22,17 @@ To Do List:
   ``--client`` The type of Neocron client (e.g. retail).  Will default to ``retail`` if nothing is specified. <br />
   ``--force`` This will force the patcher to do a file system check, and sets the local client patch level to "0".  This will also override the excluded files list!  Use with care.
   
-  
 # Requirements
   This was tested with Ruby v2.3.4, but previous versions _should_ work.  The only third-party gem used in this application is ``Trollop``, which can be installed by running ``gem install trollop``.  All other requirements are built into the standard Ruby stack.
   
   As of Revision ``20171229``, the trollop gem will automatically be installed if it's not detected.
+  
+# Directory Structure
+This script assumes it is is placed a directory above your Neocron clients. For example, if you have the script in ```/home/<username>/Games/Neocron``` then the "RETAIL" client would be installed into ```/home/<username>/Games/Neocron/retail```
+
+# Windows Usage
+This script *can* be used to upgrade/install Neocron on Windows platforms as well.  But, you have to manually download and install Ruby.
+
+You can download Ruby from https://rubyinstaller.org/downloads/.  I recommend the lastest v2.4.x branch as that is what this script was built on.  Run the installer, make sure the Ruby executable is added to your systems path.  You **DO NOT** need to install the MSYS2 toolkit.
+
+If you already have the existing NCC Launcher installed to ```C:\Games\Neocron Classic\```, place the ```patcher.rb``` in ```C:\Games\Neocron Classic\clients\```.
