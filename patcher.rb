@@ -64,7 +64,7 @@ end
 # VERSION CHECK
 #
 vCheckURL = "https://raw.githubusercontent.com/ncc-gnisha/NCC-linuxPatcher/master/LATEST"
-THISVERSION="20171228"
+THISVERSION="20171229"
 latestVersion = open(vCheckURL) {|f| f.read[0,16].gsub(/\D/, "").chomp }
 if latestVersion != THISVERSION
     puts "Patcher out of date.".red
