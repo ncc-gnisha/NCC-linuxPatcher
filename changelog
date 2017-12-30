@@ -1,0 +1,12 @@
+20171229
+* Moved from a version number, to a Revision ID (YEAR MONTH DATE)
+* Patch script will auto-update itself once a new version is released.
+
+Code Changes
+* If no client is specified, "retail" is automatically used. - Thanks @Lykos
+* If the "trollop" gem is is not installed, the script will install it for you. - Thanks @Lykos
+* Moved the "[ OK ]" output on downloading a file to only display it _after_ the file has been downloaded.
+
+1.0.1 - 12/11/2017
+==================
+* Initital Commit, no change logs kept before this release.
