@@ -36,3 +36,8 @@ This script *can* be used to upgrade/install Neocron on Windows platforms as wel
 You can download Ruby from https://rubyinstaller.org/downloads/.  I recommend the lastest v2.4.x branch as that is what this script was built on.  Run the installer, make sure the Ruby executable is added to your systems path.  You **DO NOT** need to install the MSYS2 toolkit.
 
 If you already have the existing NCC Launcher installed to ```C:\Games\Neocron Classic\```, place the ```patcher.rb``` in ```C:\Games\Neocron Classic\clients\```.
+
+Download the ```runNeocron.bat``` file and place it into the same directory as the ```patcher.rb```. 
+
+To run Neocron, run the ```runNeocron.bat``` file!
+You can also create a shortcut to this batch file on your desktop, change the icon, etc.
