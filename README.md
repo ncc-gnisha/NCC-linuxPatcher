@@ -1,3 +1,5 @@
+[![Ruby Version](https://img.shields.io/badge/Ruby%20Version-2.4+%2B-red.svg)]()
+[![Patcher Revision](https://img.shields.io/badge/Patcher%20Revision-20171229-blue.svg)]()
 # Neocron Classic Patcher for Linux
 
 So, this was my attempt at rewriting my current bash-based Neocron Classic for Linux Launcher in Ruby.  :heart: 
