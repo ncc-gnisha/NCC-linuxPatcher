@@ -1,18 +1,9 @@
 #!/usr/bin/env ruby
 require 'digest'
-require 'trollop'
 require 'net/http'
 require 'uri'
 require 'open-uri'
 require 'fileutils'
-
-#
-# Set the options via Trollop
-#
-opts = Trollop::options do
-  opt :client, "Client type", :type => :string, :required => "true"
-  opt :force, "Force patcher run"
-end
 
 #
 # Lets add some color!!
@@ -37,6 +28,55 @@ class String
 
 end
 
+#
+# Check for trollop and install it if required.
+#
+begin
+  gem "trollop"
+rescue LoadError
+  puts " [ ERROR ] Trollop is required for this script. Let me just grab that for you... ".red
+  system("gem install trollop")
+  Gem.clear_paths
+end
+
+require 'trollop'
+
+#
+# Set the options via Trollop
+#
+opts = Trollop::options do
+  opt :client, "Client type", :type => :string, :default => "retail"
+  opt :force, "Force patcher run"
+end
+
+####### SCRIPT DEFS ############
+#
+# def for download
+#
+def download(url, path)
+  File.open("#{path}", "w") do |f|
+    IO.copy_stream(open("#{url}"), f)
+  end
+end
+####### SCRIPT DEFS ############
+
+#
+# VERSION CHECK
+#
+vCheckURL = "https://raw.githubusercontent.com/ncc-gnisha/NCC-linuxPatcher/master/LATEST"
+THISVERSION="20171228"
+latestVersion = open(vCheckURL) {|f| f.read[0,16].gsub(/\D/, "").chomp }
+if latestVersion != THISVERSION
+    puts "Patcher out of date.".red
+    print "Downloading updated patch script: "
+    download("https://raw.githubusercontent.com/ncc-gnisha/NCC-linuxPatcher/master/patcher.rb",__FILE__)
+    puts " [ OK ]".green
+    puts "Script has been updated.  Plese re-run.".green
+    exit
+end
+
+####### BEGIN SCRIPT #########
+
 banner = 
 "
  #     #                                           
@@ -47,8 +87,7 @@ banner =
  #    ## #      #    # #    # #   #  #    # #   ## 
  #     # ######  ####   ####  #    #  ####  #    # 
 
-     Neocron Classic  -- Linux Patcher v1.0.1
-                                          by Gnisha
+ Neocron Classic  -- CLI Patcher REVISION #{THISVERSION}
  =================================================
 "
 puts "#{banner}"
@@ -117,27 +156,21 @@ File.open("#{opts[:client]}.manifest").drop(1).each do |line|
 end
 
 #
-# Download out of date files.
+# Download files if needed.
 #
-def download(url, path)
-  File.open("#{path}", "w") do |f|
-    IO.copy_stream(open("#{url}"), f)
-  end
-end
-
 if File.exist?("#{opts[:client]}.download")
   patch_server = "http://patches.neocron.org/clients/#{opts[:client]}"
   puts " [ PATCHER ] Patching files".yellow
   File.open("#{opts[:client]}.download").each do |line|
     file = line.chomp
-    print "\t => #{file}"
-    print " [ OK ]\n".green
+    print "\t => #{file}: "
     dirname = File.dirname("#{opts[:client]}/#{file}")
     unless File.directory?(dirname)
       FileUtils.mkdir_p(dirname)
     end
     url_to_file = URI.escape("#{patch_server}/#{file}")
     download("#{url_to_file}","#{opts[:client]}/#{file}")
+    print " [ OK ]\n".green
   end
 end
 puts " [ PATCHER ] Complete.".green
