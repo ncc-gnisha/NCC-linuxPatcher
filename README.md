@@ -1,4 +1,4 @@
-[![Ruby Version](https://img.shields.io/badge/Ruby%20Version-2.4+%2B-red.svg)]()
+[![Ruby Version](https://img.shields.io/badge/Ruby%20Version-2.3%2B-red.svg)]()
 [![Patcher Revision](https://img.shields.io/badge/Patcher%20Revision-20171229-blue.svg)]()
 # Neocron Classic Patcher for Linux
 
