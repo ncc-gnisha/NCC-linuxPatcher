@@ -1,6 +1,8 @@
 [![Ruby Version](https://img.shields.io/badge/Ruby%20Version-2.3%2B-red.svg)]()
 [![Patcher Revision](https://img.shields.io/badge/Patcher%20Revision-20171229-blue.svg)]()
 
+:exclamation: This application is no longer needed for Neocron.  The updated launcher works via Wine on Linux.
+
 This application is NOT supported by the Neocron Classic Team, nor is the Neocron Classic Team responsible for this application.  This is an application that is provided by myself, for the general public.
 # Neocron Classic Patcher for Linux
 
